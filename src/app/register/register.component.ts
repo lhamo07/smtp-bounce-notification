@@ -56,6 +56,9 @@ export class RegisterComponent {
   onSubmit() {
     console.log('sign up works');
     console.log(this.registerForm.value);
+    console.log(this.registerForm.get("email")?.value)
+    this.user.email = this.registerForm.get("email")?.value
+    this.user.password = this.registerForm.get("password")?.value
 
     this.authService
       .signUp(this.user)
