@@ -1,45 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CognitoService, IUser } from '../service/auth-service.service';
-
-
+import { Authservice, IUser } from '../service/auth-service.service';
+import { ToastNotificationService } from '../service/toast-notification.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  // isConfirm: boolean;
-  // user: IUser;
-
-  // constructor(private router: Router,
-  //             private cognitoService: CognitoService) {
-  //   this.loading = false;
-  //   this.isConfirm = false;
-  //   this.user = {} as IUser;
-  // }
-
-  // public signUp(): void {
-  //   this.loading = true;
-  //   this.cognitoService.signUp(this.user)
-  //   .then(() => {
-  //     this.loading = false;
-  //     this.isConfirm = true;
-  //   }).catch(() => {
-  //     this.loading = false;
-  //   });
-  // }
-
   registerForm!: FormGroup;
   isConfirm: boolean = false;
   loading: boolean = false;
   user: IUser;
-  router: any;
- 
 
-
-  constructor(private authService: CognitoService) {
+  constructor(
+    private router: Router,
+    private authService: Authservice,
+    private notify: ToastNotificationService
+  ) {
     this.user = {} as IUser;
   }
 
@@ -51,38 +30,39 @@ export class RegisterComponent {
         Validators.minLength(5),
       ]),
     });
-    console.log('authservice', this.authService);
   }
   onSubmit() {
     console.log('sign up works');
     console.log(this.registerForm.value);
-    console.log(this.registerForm.get("email")?.value)
-    this.user.email = this.registerForm.get("email")?.value
-    this.user.password = this.registerForm.get("password")?.value
+    console.log(this.registerForm.get('email')?.value);
+    this.user.email = this.registerForm.get('email')?.value;
+    this.user.password = this.registerForm.get('password')?.value;
 
     this.authService
       .signUp(this.user)
       .then(() => {
+        this.isConfirm = true;
+        this.notify.showSuccess('Register successfully');
+        // this.router.navigate(['/code']);
         console.log(this.user.email);
       })
       .catch((error) => {
         console.log('error', error);
       });
-    console.log('user', this.user.email);
+    // console.log('user', this.user.email);
   }
 
+  public confirmSignUp() {
+    // this.user.email = this.registerForm.get('email')?.value;
+    // this.user.code = this.registerForm.get('code')?.value;
 
-  public confirmSignUp(){
-    this.authService.confirmSignUp(this.user)
-    .then(() => {
-      this.router.navigate(['/login']);
-    }).catch(() => {
-      this.loading = false;
-    });
+    this.authService
+      .confirmSignUp(this.user)
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
+      .catch(() => {
+        this.loading = false;
+      });
   }
 }
-
- 
-// }
-
-
