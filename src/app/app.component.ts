@@ -9,13 +9,13 @@ import { Authservice } from './service/auth-service.service';
 })
 export class AppComponent {
   title = 'smtp-bounce-notification';
-  constructor() {}
-  // signOut() {
-  //   this.authService.signOut().then(() => {
-  //     console.log('signout successfully');
-  //     this.router.navigate(['/signup']);
-  //   });
-  // }
+  constructor(private router: Router, private authService: Authservice) {}
+  signOut() {
+    this.authService.signOut().then(() => {
+      console.log('signout successfully');
+      this.router.navigate(['/signup']);
+    });
+  }
 
   ngOnInit(): void {}
 }

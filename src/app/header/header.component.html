@@ -27,6 +27,15 @@
           >Delivery</a
         >
       </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/signOut"
+          (click)="signOut()"
+          *ngIf="loggedInUser()"
+          >SignOut</a
+        >
+      </li>
     </ul>
   </div>
 </nav>

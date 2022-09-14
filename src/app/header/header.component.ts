@@ -16,4 +16,10 @@ export class HeaderComponent implements OnInit {
   loggedInUser() {
     return this.authService.loggedInCheck();
   }
+  signOut() {
+    this.authService.signOut().then(() => {
+      console.log('signout successfully');
+      this.router.navigate(['/register']);
+    });
+  }
 }
