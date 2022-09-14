@@ -1,0 +1,30 @@
+<h2 style="text-align: center">SMTPComplaintNotifications</h2>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">SMTPresponse</th>
+      <th scope="col">SnsPublishTime</th>
+      <th scope="col">SESSenderAddress</th>
+      <th scope="col">SESDestinationAddress</th>
+      <th scope="col">SourceIP</th>
+      <th scope="col">Time</th>
+      <th scope="col">SESMessageType</th>
+
+      <th scope="col">SESMessageId</th>
+      <th scope="col">Subject</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let delivery of deliveryData">
+      <th scope="row">{{ delivery.SMTPresponse }}</th>
+      <td>{{ delivery.SnsPublishTime }}</td>
+      <td>{{ delivery.SESSenderAddress }}</td>
+      <td>{{ delivery.SESDestinationAddress }}</td>
+      <td>{{ delivery.SourceIP }}</td>
+      <td>{{ delivery.Time }}</td>
+      <td>{{ delivery.SESMessageType }}</td>
+      <td>{{ delivery.SESMessageId }}</td>
+      <td>{{ delivery.Subject }}</td>
+    </tr>
+  </tbody>
+</table>

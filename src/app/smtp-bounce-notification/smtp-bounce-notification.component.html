@@ -1,0 +1,38 @@
+<!-- <div *ngFor="let data of bounceData">
+  <div>
+    <h1>{{ data.SMTPresponse }}</h1>
+  </div>
+</div> -->
+<h2 style="text-align: center">SMTPBounceNotifications</h2>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">SMTPresponse</th>
+      <th scope="col">SnsPublishTime</th>
+      <th scope="col">SESSenderAddress</th>
+      <th scope="col">Which Bounce?</th>
+      <th scope="col">SESDestinationAddress</th>
+      <th scope="col">BDate</th>
+      <th scope="col">sourceIP</th>
+      <th scope="col">bounceSubType</th>
+      <th scope="col">SESMessageType</th>
+      <th scope="col">SESMessageId</th>
+      <th scope="col">bounceType</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let bounce of bounceData">
+    <tr>
+      <th scope="row">{{ bounce.SMTPresponse }}</th>
+      <td>{{ bounce.SnsPublishTime }}</td>
+      <td>{{ bounce.SESSenderAddress }}</td>
+      <td>{{ bounce["Which Bounce?"] }}</td>
+      <td>{{ bounce.SESDestinationAddress }}</td>
+      <td>{{ bounce.BDate }}</td>
+      <td>{{ bounce.sourceIP }}</td>
+      <td>{{ bounce.bounceSubType }}</td>
+      <td>{{ bounce.SESMessageType }}</td>
+      <td>{{ bounce.SESMessageId }}</td>
+      <td>{{ bounce.bounceType }}</td>
+    </tr>
+  </tbody>
+</table>

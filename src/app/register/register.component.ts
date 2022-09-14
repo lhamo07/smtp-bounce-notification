@@ -29,12 +29,11 @@ export class RegisterComponent {
         Validators.required,
         Validators.minLength(5),
       ]),
+      code: new FormControl(null),
     });
   }
   onSubmit() {
     console.log('sign up works');
-    console.log(this.registerForm.value);
-    console.log(this.registerForm.get('email')?.value);
     this.user.email = this.registerForm.get('email')?.value;
     this.user.password = this.registerForm.get('password')?.value;
 
@@ -44,7 +43,6 @@ export class RegisterComponent {
         this.isConfirm = true;
         this.notify.showSuccess('Register successfully');
         // this.router.navigate(['/code']);
-        console.log(this.user.email);
       })
       .catch((error) => {
         console.log('error', error);
@@ -53,9 +51,10 @@ export class RegisterComponent {
   }
 
   public confirmSignUp() {
-    // this.user.email = this.registerForm.get('email')?.value;
-    // this.user.code = this.registerForm.get('code')?.value;
-
+    this.user.email = this.registerForm.get('email')?.value;
+    console.log(this.registerForm.get('email')?.value);
+    this.user.code = this.registerForm.get('code')?.value;
+    console.log(this.registerForm.get('code')?.value);
     this.authService
       .confirmSignUp(this.user)
       .then(() => {

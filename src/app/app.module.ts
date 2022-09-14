@@ -10,16 +10,26 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TemplateBinding } from '@angular/compiler';
 import { FormsModule } from '@angular/forms';
-// import { CodeComponent } from './code/code.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { SmtpBounceNotificationComponent } from './smtp-bounce-notification/smtp-bounce-notification.component';
+import { SmtpComplaintNotificationComponent } from './smtp-complaint-notification/smtp-complaint-notification.component';
+import { SmtpDeliveryNotificationComponent } from './smtp-delivery-notification/smtp-delivery-notification.component';
+import { SearchFilterPipe } from './search-filter.pipe';
+import { HeaderComponent } from './header/header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    // CodeComponent,
+    SmtpBounceNotificationComponent,
+    SmtpComplaintNotificationComponent,
+    SmtpDeliveryNotificationComponent,
+    SearchFilterPipe,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+
     ToastrModule.forRoot(),
   ],
   providers: [],

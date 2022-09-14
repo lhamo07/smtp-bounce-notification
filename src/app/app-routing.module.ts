@@ -4,12 +4,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SmtpBounceNotificationComponent } from './smtp-bounce-notification/smtp-bounce-notification.component';
+import { SmtpComplaintNotificationComponent } from './smtp-complaint-notification/smtp-complaint-notification.component';
+import { SmtpDeliveryNotificationComponent } from './smtp-delivery-notification/smtp-delivery-notification.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  // { path: 'code', component: CodeComponent },
+  // { path: 'dashboard', component: DashboardComponent },
+  { path: 'bounce', component: SmtpBounceNotificationComponent },
+  { path: 'complaint', component: SmtpComplaintNotificationComponent },
+  { path: 'delivery', component: SmtpDeliveryNotificationComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: 'bounce', component: SmtpBounceNotificationComponent },
+      { path: 'complaint', component: SmtpComplaintNotificationComponent },
+      { path: 'delivery', component: SmtpDeliveryNotificationComponent },
+    ],
+  },
 ];
 
 @NgModule({

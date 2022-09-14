@@ -42,14 +42,15 @@
               please enter strong password
             </span>
           </div>
+          <br />
+
           <div class="col d-grid">
             <button type="submit" class="btn btn-primary">SignUP</button>
-            <br />
             <a
               style="color: blue"
               routerLink="/login"
               style="text-decoration: none"
-              >login</a
+              >signIn</a
             >
           </div>
         </form>
@@ -58,33 +59,22 @@
     <ng-container *ngIf="isConfirm">
       <!-- <app-code></app-code> -->
       <div class="row">
-        <div class="col mb-2">
-          <label for="code" class="form-label">Code:</label>
-          <input
-            type="text"
-            id="code"
-            name="code"
-            #code="ngModel"
-            [(ngModel)]="user.code"
-            class="form-control form-control-sm"
-          />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col d-grid">
-          <button
-            type="button"
-            (click)="confirmSignUp()"
-            class="btn btn-sm btn-success"
-          >
-            <!-- <span
-              class="spinner-border spinner-border-sm"
-              role="status"
-              aria-hidden="true"
-            ></span> -->
-            Confirm
-          </button>
-        </div>
+        <h1>Code</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="confirmSignUp()">
+          <div class="form-group">
+            <label for="code">code</label>
+            <input
+              type="text"
+              class="form-control"
+              id="code"
+              placeholder="code"
+              formControlName="code"
+            />
+          </div>
+          <div class="col d-grid">
+            <button type="submit" class="btn btn-primary">code</button>
+          </div>
+        </form>
       </div>
     </ng-container>
   </div>

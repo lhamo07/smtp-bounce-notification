@@ -8,7 +8,7 @@ export interface IUser {
   email: string;
   password: string;
   showPassword: boolean;
-  code: string;
+  code: any;
   name: string;
 }
 
@@ -43,5 +43,15 @@ export class Authservice {
     return Auth.signIn(user.email, user.password).then(() => {
       this.authenticationSubject.next(true);
     });
+  }
+  // public signOut(): Promise<any> {
+  //   return Auth.signOut().then(() => {
+  //     this.authenticationSubject.next(false);
+  //   });
+  // }
+  loggedInCheck() {
+    return !!localStorage.getItem(
+      'CognitoIdentityServiceProvider.2situb5qd72946epu259r37fuk.89c72d25-07c7-48ff-9d33-db93edad0877.idToken'
+    );
   }
 }

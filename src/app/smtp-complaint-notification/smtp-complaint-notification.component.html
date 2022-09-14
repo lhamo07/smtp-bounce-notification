@@ -1,0 +1,30 @@
+<h2 style="text-align: center">SMTPComplaintNotifications</h2>
+<input
+  type="text"
+  class="searchTerm"
+  id="search-text"
+  aria-describedby="search-text"
+  placeholder="Enter text to search"
+  name="searchTerm"
+  autofocus
+/>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">SnsPublishTime</th>
+      <th scope="col">SESSenderAddress</th>
+      <th scope="col">SESMessageType</th>
+      <th scope="col">SESDestinationAddress</th>
+      <th scope="col">SESMessageId</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let complaint of complaintData">
+    <tr>
+      <th scope="row">{{ complaint.SnsPublishTime }}</th>
+      <td>{{ complaint.SESSenderAddress }}</td>
+      <td>{{ complaint.SESMessageType }}</td>
+      <td>{{ complaint.SESDestinationAddress }}</td>
+      <td>{{ complaint.SESMessageId }}</td>
+    </tr>
+  </tbody>
+</table>
